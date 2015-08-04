@@ -25,4 +25,3 @@ namespace anagram
         return finder(instr);
     }
 }
-
