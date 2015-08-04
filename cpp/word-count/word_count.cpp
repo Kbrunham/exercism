@@ -44,3 +44,4 @@ std::map<std::string, int> word_count::words(const std::string& str)
 
 	return counts;
 }
+
