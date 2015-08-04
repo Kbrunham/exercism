@@ -1,15 +1,14 @@
 #include <string>
-#include <boost/regex.hpp>
-
+#include <algorithm>
 #include "bob.h"
 
 namespace
 {
 	bool is_question(const std::string& str)
 	{
-        // Match any string ending with a question mark
-        static const boost::regex e(".+\\?\\s*");
-        return (!str.empty() && boost::regex_match(str, e));
+        // Find the last non-whitespace character and see if it is a question mark
+        auto it = std::find_if(str.rbegin(), str.rend(), [](char c){return !std::isspace(c);});
+		return ((it != str.rend()) && (*it == '?'));
     }
 
 	bool is_yelling(const std::string& str)
@@ -22,7 +21,7 @@ namespace
 	bool is_not_saying_anything(const std::string& str)
 	{
         // Not saying anything is empty or whitespace text
-        return (str.empty() || (str.find_first_not_of(" ") == std::string::npos));
+        return (std::find_if(str.begin(), str.end(), [](char c){return !std::isspace(c);}) == str.end());
 	}
 }
 
