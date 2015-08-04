@@ -4,5 +4,5 @@
 
 namespace hamming
 {
-    unsigned int compute(const std::string& str1, const std::string& str2);
+    size_t compute(const std::string& str1, const std::string& str2);
 }
