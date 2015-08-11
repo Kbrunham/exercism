@@ -25,3 +25,6 @@ eclipse
 build
 .settings
 xcode
+.pyc
+.cache
+__pycache__
